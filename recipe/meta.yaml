@@ -1,5 +1,5 @@
 {% set name = "bokeh-root-cmd" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e484283892b19cf5c3b8592d3c1ce560239a1387ce4a6acc6f3a8bfe38c47aa6
+  sha256: 5dedf4b90565b40af5ba9fbaccdd061f1fc57239c1e5f9ec3f2351bf5e9a0f8d
 
 build:
   noarch: python
