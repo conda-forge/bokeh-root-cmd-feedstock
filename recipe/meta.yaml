@@ -1,5 +1,5 @@
 {% set name = "bokeh-root-cmd" %}
-{% set version = "0.0.5" %}
+{% set version = "0.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1ca0f7bb59c6e26b543abfbab5b8c7306995e20b46effca41a17c44c248fc986
+  sha256: e484283892b19cf5c3b8592d3c1ce560239a1387ce4a6acc6f3a8bfe38c47aa6
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv --no-deps"
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
   entry_points:
     - bokeh-root-cmd = bokeh_root_cmd.main:run
 
@@ -23,13 +23,16 @@ requirements:
   run:
     - python >=3.6,<4.0.0
     - click >=7.0
+    - bokeh
 
 test:
   requires:
     - bokeh
+    - pip
   imports:
     - bokeh_root_cmd
   commands:
+    - pip check
     - bokeh-root-cmd --help
 
 about:
@@ -37,7 +40,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: 'Command line wrapper to run a Bokeh script/folder at the root URL'
+  summary: Command line wrapper to run a Bokeh script/folder at the root URL
   dev_url: https://github.com/ideonate/bokeh-root-cmd
 
 extra:
