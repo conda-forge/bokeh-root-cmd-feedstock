@@ -23,13 +23,16 @@ requirements:
   run:
     - python >=3.6,<4.0.0
     - click >=7.0
+    - bokeh
 
 test:
   requires:
     - bokeh
+    - pip
   imports:
     - bokeh_root_cmd
   commands:
+    - pip check
     - bokeh-root-cmd --help
 
 about:
