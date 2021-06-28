@@ -23,7 +23,6 @@ requirements:
   run:
     - python >=3.6,<4.0.0
     - click >=7.0
-    - bokeh
 
 test:
   requires:
