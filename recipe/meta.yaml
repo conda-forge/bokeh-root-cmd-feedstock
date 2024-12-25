@@ -6,28 +6,29 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 19641bc12ba9fb8af34e563c89d20bcb922f6f228b0b825278d81e74313c55da
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps
   entry_points:
     - bokeh-root-cmd = bokeh_root_cmd.main:run
 
 requirements:
   host:
-    - python >=3.6,<4.0.0
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6,<4.0.0
+    - python >={{ python_min }},<4.0.0
     - click >=7.0
 
 test:
   requires:
     - bokeh
     - pip
+    - python {{ python_min }}
   imports:
     - bokeh_root_cmd
   commands:
